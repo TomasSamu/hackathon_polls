@@ -28,7 +28,6 @@ class OptionController extends Controller
         $option->user_id = Auth::id();
 
         $option->save();
-        return redirect (action('PublicController@index'));
-
+        return redirect (action('PublicController@index'))->with('success', 'Option added');
     } 
 }

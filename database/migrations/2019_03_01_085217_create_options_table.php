@@ -20,8 +20,6 @@ class CreateOptionsTable extends Migration
             $table->text('title');
             $table->string('description');
             $table->timestamps();
-
-
         });
     }
 

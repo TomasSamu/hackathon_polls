@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use App\Option;
 
 class PublicController extends Controller
 {
@@ -16,6 +17,8 @@ class PublicController extends Controller
 
     public function show(Question $question)
     {
-        return view('public.show', compact('question'));
+        $options = Option::all()->where('question_id', $question->id);
+
+        return view('public.show', compact('question', 'options'));
     }
 }
