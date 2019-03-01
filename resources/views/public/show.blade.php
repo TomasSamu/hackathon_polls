@@ -18,8 +18,10 @@
                         <option value="{{ $option->title }}">{{ $option->title }}</option>
                     @endforeach
                 </select>
-                <input type="submit" name="submit" class="btn btn-success">
+                <input type="submit" name="submit" class="btn btn-success" value="Vote!">
             </div>
         </form>
     @endguest
+
+
 @endsection
