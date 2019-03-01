@@ -10,7 +10,7 @@
             <li><a href="{{action('OptionController@create', $question->id)}}">Add Option</a></li>
         </ul>
 
-        <form method="POST" action="">
+        <form method="POST" action="{{action('OptionController@vote')}}">
             @csrf
             <div class="form-group">
                 <label>Options</label>

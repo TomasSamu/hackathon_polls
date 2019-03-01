@@ -30,4 +30,16 @@ class OptionController extends Controller
         $option->save();
         return redirect (action('PublicController@index'))->with('success', 'Option added');
     } 
+
+
+    public function vote(Request $request)
+    {
+
+        $validator = $request->validate([
+            'title' => 'required',
+        ]);
+
+        
+
+    }
 }

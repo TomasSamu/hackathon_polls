@@ -25,4 +25,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::resource('questions', 'QuestionsController')->except(['show']);
     Route::get('questions/{question}/option', 'OptionController@create');
     Route::post('questions/{question}/option', 'OptionController@store');
+    Route::post('questions/vote', 'OptionController@vote');
 });
