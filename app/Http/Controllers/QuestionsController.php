@@ -40,14 +40,13 @@ class QuestionsController extends Controller
             'title' => 'required',
             'text' => 'required' 
         ]);
-            $question = new Question;
-            $question->user_id = Auth::id();
-            $question->title = $request->title;
-            $question->text = $request->text;
-            $question->save();
+        $question = new Question;
+        $question->user_id = Auth::id();
+        $question->title = $request->title;
+        $question->text = $request->text;
+        $question->save();
 
-            return redirect(action('QuestionsController@index'))->with('success','You successfully posted a question!');
-
+        return redirect(action('QuestionsController@index'))->with('success','You successfully posted a question!');
     }
 
     /**
