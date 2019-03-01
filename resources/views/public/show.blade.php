@@ -7,9 +7,9 @@
         <h2>You need to Sign In to Vote!</h2>
     @else
         <ul>
-            <li><a href="{{ action('PublicController@show', $question->id) }}">Read Question</a></li>
+           
             <li><a href="#">Vote</a></li>
-            <li><a href="#">Add Option</a></li>
+        <li><a href="{{action('OptionController@create', $question->id)}}">Add Option</a></li>
         </ul>
     @endguest
 @endsection
