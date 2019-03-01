@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use Auth;
 
 class QuestionsController extends Controller
 {
@@ -35,7 +36,18 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = $request->validate([
+            'title' => 'required',
+            'text' => 'required' 
+        ]);
+            $question = new Question;
+            $question->user_id = Auth::id();
+            $question->title = $request->title;
+            $question->text = $request->text;
+            $question->save();
+
+            return redirect(action('QuestionsController@index'))->with('success','You successfully posted a question!');
+
     }
 
     /**
