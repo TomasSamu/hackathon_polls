@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Option;
+use App\Vote;
 use Auth;
 
 class OptionController extends Controller
@@ -35,11 +36,15 @@ class OptionController extends Controller
     public function vote(Request $request)
     {
 
-        $validator = $request->validate([
-            'title' => 'required',
-        ]);
+        // $validator = $request->validate([
+        //     'title' => 'required',
+        // ]);
 
-        
-
+        $vote = new Vote;
+        $vote->question_id = $request->question_id;
+        $vote->user_id = $request->user_id;
+        $vote->option_id = $request->option;
+        $vote->save();
+        return redirect (action('PublicController@index'))->with('success', 'Voted');
     }
 }

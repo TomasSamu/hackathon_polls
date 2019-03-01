@@ -16,7 +16,7 @@
                 <label>Options</label>
                 <select name="option" class="form-control">
                     @foreach ($options as $option)
-                        <option value="{{ $option->title }}">{{ $option->title }}</option>
+                        <option value="{{ $option->id }}">{{ $option->title }}</option>
                     @endforeach
                 </select>
                 <input type="hidden" name="user_id" value="{{ Auth::id() }}">
@@ -25,6 +25,11 @@
             </div>
         </form>
     @endguest
-
-
+    <br>
+    <h3>The answers for this questions are:</h3>
+    <ul>
+        @foreach ($votes_per_option as $vote)
+            <li>{{ $vote->title }}, {{ $vote->count }}</li>
+        @endforeach 
+    </ul>
 @endsection

@@ -7,7 +7,8 @@ use App\Option;
 
 class Vote extends Model
 {
-    public function options()
+
+    public function option()
     {
         return $this->belongsTo(Option::class);
     }
