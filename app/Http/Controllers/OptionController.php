@@ -35,10 +35,13 @@ class OptionController extends Controller
 
     public function vote(Request $request)
     {
+        $vote = Vote::where('user_id', $request->question_id)
+            ->where('question_id', $request->user_id)
+            ->first();
 
-        // $validator = $request->validate([
-        //     'title' => 'required',
-        // ]);
+        if ($vote) {
+            return back()->withErrors(['Porco dio you idiot wtf are you doing']);
+        }
 
         $vote = new Vote;
         $vote->question_id = $request->question_id;
