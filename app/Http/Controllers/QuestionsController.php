@@ -15,7 +15,9 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        return view('questions.index');
+        $questions = Question::all();
+
+        return view('questions.index', compact('questions'));
     }
 
     /**
@@ -57,10 +59,7 @@ class QuestionsController extends Controller
      */
     public function edit(Question $question)
     {
-    
-
-
-
+        return view('questions.edit', compact('question'));
     }
 
     /**
@@ -70,9 +69,19 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Question $question)
     {
-        //
+        $validator = $request->validate([
+            'title' => 'required',
+            'text' => 'required' 
+        ]);
+
+        $question->user_id = Auth::id();
+        $question->title = $request->title;
+        $question->text = $request->text;
+        $question->update();
+
+        return redirect(action('QuestionsController@index'))->with('success','You successfully updated a question!');
     }
 
     /**
